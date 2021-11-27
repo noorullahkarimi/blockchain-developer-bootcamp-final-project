@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>escrow-sys</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.1/web3.min.js"></script> -->
+  <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+  <div class="alert">you have succrss</div>
+
+  <div class="content-all">
+    <div class="header">
+      <div class="items-1"><img src="img/safeparadise.png" alt="img.png"></div>
+      <div class="items-1"><h1>contract</h1></div>
+      <div class="items-1"></div>
+    </div>
+
+    <div class="header-img">
+      <img src="img/header.jpg" alt="img.png">
+    </div>
+
+    <div class="content-contract">
+      <!-- part-pay -->
+      <div class="content-input-pay">
+        <br><p><h4>notice:create a contract and start with employer:(pay)</h4></p>
+        <br><label>address judgment:</label><br>
+        <input type="text" id="pay-addr"><br>
+        <label>money you want for the deposit:</label><br>
+        <input type="number" id="pay-deposit"><br>
+        <input type="button" value="submit" id="pay-button">
+      </div>
+      <!-- part-deposit -->
+      <div class="content-input-pay">
+        <p><h4>notice:the contract complete when worker call number contract:(deposit)</h4></p>
+        <br>
+        <label>the number of contract:</label><br>
+        <input type="number" id="deposit-number-contract"><br>
+        <label>the deposit of contract:</label><br>
+        <input type="number" id="deposit-money-contract"><br>
+        <input type="button" value="submit" id="deposit-button">
+      </div>
+      <!-- part-confirm -->
+      <div class="content-input-pay">
+        <p><h4>notice:this part should fill with address of employer:(confirm)</h4></p>
+        <br>
+        <label>the number of contract:</label><br>
+        <input type="number" id="confirm-number-contract" ><br>
+        <br><label>if work is done or not use the suitable keyword (true/false):</label><br>
+        <input type="text" id="confirm-verify"><br>
+        <input type="button" value="submit" id="confirm-button">
+      </div>
+      <!-- part-judge -->
+      <div class="content-input-pay">
+        <p><h4>notice:this part should fill with address of judgment:(judge)</h4></p>
+        <br>
+        <label>the number of contract:</label><br>
+        <input type="number" id="judge-number-contract"><br>
+        <br><label>if work is done or not use the suitable keyword (true/false):</label><br>
+        <input type="text" id="judge-verify"><br>
+        <input type="button" value="submit" id="judge-button">
+      </div>
+      <!-- part-withdrawWorker -->
+      <div class="content-input-pay">
+        <p><h4>notice:this part should fill with address of (worker) and it is for the get widthdraw:(widthdraw)</h4></p>
+        <br>
+        <label>the number of contract:</label><br>
+        <input type="number" id="withdrawWorker-number-contract"><br>
+        <br>
+        <input type="button" value="submit" id="withdrawWorker-button">
+      </div>
+      <!-- part-withdrawEmployer -->
+      <div class="content-input-pay">
+        <p><h4>notice:this part should fill with address of (employer) and it is for the get widthdraw:(widthdraw)</h4></p>
+        <br>
+        <label>the number of contract:</label><br>
+        <input type="number" id="withdrawEmployer-number-contract"><br>
+        <br>
+        <input type="button" value="submit" id="withdrawEmployer-button">
+      </div>
+
+      <div class="content-input-1">
+        <h4>notice 1:please fill every part with true value to get right answer.</h4>
+        <h4>notice 2:please fill every part with true address to get right answer.</h4>
+        <h4>notice 3:please sure you have the MetaMask wallet on your browser.</h4>
+      </div>
+    </div>
+    <div class="footer">
+      <p>producted by : noorollah karimi</p>
+    </div>
+  </div>
+
+
+
+
+  <!-- <hr style="width: 100%;">
+  <h1>This is a Dapp</h1>
+  <p>
+    Hello, World!
+  </p>
+  <div id="mm-detected"></div>
+
+  <button id="mm-connect">Connect to MetaMask</button>
+
+
+  <div id="mm-current-account"></div>
+
+  <div>
+  <input id="ss-input-box" type="number" placeholder="Provide input"/>  
+  <input id="ss-input-add" type="text" placeholder="Provideadd"/>  
+</div>
+  <button id="ss-input-button">Submit Value</button>
+
+  <div>
+    <button id="ss-get-value">Get Simple Storage value</button>
+  </div>
+  <div id="ss-display-value">Current Simple Storage Value: </div> -->
+
+</body>
+
+
+
+<!-- Had trouble and had to move the script down! -->
+<script src="index.js"></script>
+<script>
+   if (typeof window.ethereum !== 'undefined') {
+    console.log('window.ethereum is enabled')
+    if (window.ethereum.isMetaMask === true) {
+      console.log('MetaMask is active');
+     
+    } else {
+      console.log('MetaMask is not available');
+    }
+  } else {
+    console.log('window.ethereum is not found');
+  }
+</script>
+
+</html>
