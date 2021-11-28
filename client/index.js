@@ -235,7 +235,7 @@ const ssABI = [
     "type": "function"
   }
 ];
-const ssAddress = '0x51789737bc70c10C577a633874e9968E7925c67c';
+const ssAddress = '0xbce17DD03a5a0628Dc73979EC4d392911069A2F7';
 // var web3 = new Web3(window.ethereum);
 // // instantiate smart contract instance
 // const escrowSystem_obj = new web3.eth.Contract(ssABI, ssAddress);
