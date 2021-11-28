@@ -275,7 +275,7 @@ async function payAction() {
 	// escrowSystem_obj.setProvider(window.ethereum);
   // var walet =ethereum.request({ method: 'eth_requestAccounts'}).then(result=>{result});
 	// var x = await escrowSystem_obj.methods.pay('0x8b71C0749ED77D9459827598EFEEf1032B2BAbcE', 100,).send({ from: '0xBe02B7d67a79c36E83Dba9b53B06eD70672251D6', value: input_pay_deposit ,gas: gasLimitDefault});
-	var x = await escrowSystem_obj.methods.pay(input_pay_addr, 100,).send({ from: ethereum.selectedAddress, value: input_pay_deposit ,gas: gasLimitDefault});
+	var x = await escrowSystem_obj.methods.pay(input_pay_addr, 100,).send({ from: ethereum.request({ method: 'eth_requestAccounts'}), value: input_pay_deposit ,gas: gasLimitDefault});
   console.log("input_pay_deposit");
   console.log(x);
   console.log("input_pay_deposit");
@@ -297,7 +297,7 @@ async function depositAction() {
 	// instantiate smart contract instance
 	const escrowSystem_obj = new web3.eth.Contract(ssABI, ssAddress);
 	escrowSystem_obj.setProvider(window.ethereum);
-	var x = await escrowSystem_obj.methods.Deposit(input_deposit_number_contract).send({ from: ethereum.selectedAddress, value: deposit_money_contract ,gas: gasLimitDefault});
+	var x = await escrowSystem_obj.methods.Deposit(input_deposit_number_contract).send({ from: ethereum.request({ method: 'eth_requestAccounts'}), value: deposit_money_contract ,gas: gasLimitDefault});
 	if (x.status == true) {
 		showAlert('contract start!');
 	} else {
@@ -314,7 +314,7 @@ async function confirmAction() {
 	// instantiate smart contract instance
 	const escrowSystem_obj = new web3.eth.Contract(ssABI, ssAddress);
 	escrowSystem_obj.setProvider(window.ethereum);
-	var x = await escrowSystem_obj.methods.confirm(input_confirm_number_contract, input_confirm_verify).send({ from: ethereum.selectedAddress ,gas: gasLimitDefault});
+	var x = await escrowSystem_obj.methods.confirm(input_confirm_number_contract, input_confirm_verify).send({ from: ethereum.request({ method: 'eth_requestAccounts'}) ,gas: gasLimitDefault});
 	if (x.status == true) {
 		showAlert('contract finished successfully!');
 	} else if (x.status == false) {
@@ -333,7 +333,7 @@ async function judgeAction() {
 	// instantiate smart contract instance
 	const escrowSystem_obj = new web3.eth.Contract(ssABI, ssAddress);
 	escrowSystem_obj.setProvider(window.ethereum);
-	var x = await escrowSystem_obj.methods.judgment(input_judge_verify, input_judge_number_contract).send({ from: ethereum.selectedAddress ,gas: gasLimitDefault});
+	var x = await escrowSystem_obj.methods.judgment(input_judge_verify, input_judge_number_contract).send({ from: ethereum.request({ method: 'eth_requestAccounts'}) ,gas: gasLimitDefault});
 	if (x.status == true) {
 		showAlert('contract finished successfully!');
 	} else if (x.status == false) {
@@ -350,7 +350,7 @@ async function withDrawWorkerAction() {
 	// instantiate smart contract instance
 	const escrowSystem_obj = new web3.eth.Contract(ssABI, ssAddress);
 	escrowSystem_obj.setProvider(window.ethereum);
-	var x = await escrowSystem_obj.methods.withdrawWorker(input_withdrawWorker_number_contract).send({ from: ethereum.selectedAddress ,gas: gasLimitDefault});
+	var x = await escrowSystem_obj.methods.withdrawWorker(input_withdrawWorker_number_contract).send({ from: ethereum.request({ method: 'eth_requestAccounts'}) ,gas: gasLimitDefault});
 	if (x.status == true) {
 		showAlert('the transaction done!');
 	} else {
@@ -364,7 +364,7 @@ async function withDrawEmployerAction() {
 	// instantiate smart contract instance
 	const escrowSystem_obj = new web3.eth.Contract(ssABI, ssAddress);
 	escrowSystem_obj.setProvider(window.ethereum);
-	var x = await escrowSystem_obj.methods.withdrawEmployer(input_withdrawEmployer_number_contract).send({ from: ethereum.selectedAddress ,gas: gasLimitDefault});
+	var x = await escrowSystem_obj.methods.withdrawEmployer(input_withdrawEmployer_number_contract).send({ from: ethereum.request({ method: 'eth_requestAccounts'}) ,gas: gasLimitDefault});
 	if (x.status == true) {
 		showAlert('the transaction done!');
 	} else {

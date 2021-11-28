@@ -1,4 +1,4 @@
-pragma solidity >=0.5.16 <0.9.0;
+pragma solidity 0.5.17;
 //this contract is an escrow system 
 //means that you and another person make a contract for work or another things
 contract escrowSystem {
@@ -14,6 +14,10 @@ contract escrowSystem {
    done,
    failed
    }
+
+   function () external payable {
+        revert();
+    }
 
   struct details {
     address payable employer;
@@ -58,7 +62,7 @@ contract escrowSystem {
     //2. should send money if worker loss the work pay for damage contract
     //3. should money given by employer 
     // require(msg.sender==contractsDetails[idContract].worker);
-    require(msg.value>=contractsDetails[idContract].deposit);
+    require(msg.value==contractsDetails[idContract].deposit);
     require(contractsDetails[idContract].state==status.notStarted);
         //status change
     contractsDetails[idContract].worker=msg.sender;    
@@ -108,8 +112,8 @@ contract escrowSystem {
     require(contractsDetails[idContract].state==status.done);
     emit logState(contractsDetails[idContract].state);
     //transfer the money to worker (money for work and his money for guaranty)
-    contractsDetails[idContract].worker.transfer(contractsDetails[idContract].price);
     contractsDetails[idContract].worker.transfer(contractsDetails[idContract].deposit);
+    contractsDetails[idContract].worker.transfer(contractsDetails[idContract].price);
     return true;
   }
   //get the money with employer
