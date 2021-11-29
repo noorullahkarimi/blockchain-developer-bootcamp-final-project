@@ -2,7 +2,9 @@
 
 ## Deployed version url:
 
-//say somthings
+we use the fleek host and you can see it below:
+
+divine-cherry-7104.on.fleek.co
 
 ## How to run this project locally:
 
@@ -29,12 +31,22 @@
 - `live-server` 
 - automatically open `http://localhost:8080`
 
+### How to populate locally deployed contract with listings
+- `truffle compile` to download the veriosn of the truffle 
+- open ganache gui 
+- `truffle migrate ` 
+- use the wallet on ganache and import them into the metamsk 
+- `live-server` on root folder of project 
+- open `http://localhost:8080` on browser
+- use the imported address to work with project
+
+
 ## Screencast link
-//say somthings
+https://youtu.be/WTv84MzZHwc
 
 ## Public Ethereum wallet for certification:
 
-
+0xACb8A9BA0F3Cf35A7415c1C24196E32779653e39
 
 ## Project description
 
