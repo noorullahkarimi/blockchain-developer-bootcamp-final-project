@@ -20,8 +20,19 @@
     height: 6rem;
     color: black;
     text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .items-1 img{width: 100%;}
+.items-1 button{
+    padding: 5px 10px;
+    background-color:white;
+    border: 1px solid rgb(32, 32, 32);
+    border-radius: 5px;
+    color: rgb(32, 32, 32);
+    margin: 5px;
+}
 .header-img{width: 100%;}
 .header-img img{width: 100%;}
 .content-contract{

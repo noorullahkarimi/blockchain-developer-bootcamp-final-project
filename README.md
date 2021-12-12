@@ -2,8 +2,6 @@
 
 ## Deployed version url:
 
-we use the fleek host and you can see it below:
-
 divine-cherry-7104.on.fleek.co
 
 ## How to run this project locally:
@@ -27,17 +25,18 @@ divine-cherry-7104.on.fleek.co
 ### Frontend
 
 - run `npm install -g live-server`
-- `cd client`
-- `live-server` 
-- automatically open `http://localhost:8080`
 
 ### How to populate locally deployed contract with listings
-- `truffle compile` to download the veriosn of the truffle 
+for run front-end:
+- `cd client` for run folder that there is `index.html` 
+- open cmd and run `live-server` it open automatically your index.html on `http://127.0.0.1:8080/`
+for the back-end part :
+- `truffle compile` to download the veriosn of the truffle and compile
+- `truffle develop` for develop
+- you can see the `package.json` that we named `escrowSystem.json` on build/contracts folder(the abi is there)
 - open ganache gui 
 - `truffle migrate ` 
 - use the wallet on ganache and import them into the metamsk 
-- `live-server` on root folder of project 
-- open `http://localhost:8080` on browser
 - use the imported address to work with project
 
 
