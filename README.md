@@ -41,6 +41,9 @@ for the back-end part :
 
 
 ## Screencast link
+how button connect work and accept metamask:
+https://youtu.be/m8RfAtpv85U
+how to work with:
 https://youtu.be/WTv84MzZHwc
 
 ## Public Ethereum wallet for certification:
