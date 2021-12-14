@@ -33,7 +33,7 @@ for run front-end:
 for the back-end part :
 - `truffle compile` to download the veriosn of the truffle and compile
 - `truffle develop` for develop
-- you can see the `package.json` that we named `escrowSystem.json` on build/contracts folder(the abi is there)
+- you can see the `package.json` for the dependency.
 - open ganache gui 
 - `truffle migrate ` 
 - use the wallet on ganache and import them into the metamsk 
