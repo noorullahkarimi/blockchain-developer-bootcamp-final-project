@@ -19,22 +19,51 @@
  */
 
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
-//
+// const infuraKey = "64dfbe5332794e20b8001d3c5f271956"
+
 // const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+// const projectId = "64dfbe5332794e20b8001d3c5f271956";
+// const HDWalletProvider = require("@truffle/hdwallet-provider");
+// const { projectId, mnemonic } = require('./secrets.json');
+// const projectId = require('./secrets.json')
+// const HDWalletProvider = require('@truffle/hdwallet-provider');
+// const mnemonic = process.env.ROPSTEN_MNEMONIC;
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const dotenv = require('dotenv');
+dotenv.config();
+const mnemonic = process.env.MNEMONIC;
+// const mnemonic = fs.readFileSync("./.env").toString().trim();
+
 
 module.exports = {
-  /**
-   * Networks define how you connect to your ethereum client and let you set the
-   * defaults web3 uses to send transactions. If you don't specify one truffle
-   * will spin up a development blockchain for you on port 9545 when you
-   * run `develop` or `test`. You can ask a truffle command to use a specific
-   * network from the command line, e.g
-   *
-   * $ truffle test --network <network-name>
-   */
-
   networks: {
+    development: {
+      host: "127.0.0.1", // Localhost (default: none)
+      port: 8545, // Standard Ethereum port (default: none)
+      network_id: "*", // Any network (default: none)
+    },
+    ropsten: {
+      host: process.env.INFURA_URL,
+      provider: () => new HDWalletProvider(mnemonic, process.env.INFURA_URL),
+      network_id: "3",
+      gas: 5500000
+    },
+    /**
+     * Networks define how you connect to your ethereum client and let you set the
+     * defaults web3 uses to send transactions. If you don't specify one truffle
+     * will spin up a development blockchain for you on port 9545 when you
+     * run `develop` or `test`. You can ask a truffle command to use a specific
+     * network from the command line, e.g
+     *
+     * $ truffle test --network <network-name>
+     */
+
+    // ropsten: {
+    //   network_id: 3,
+    //   host: '127.0.0.1',
+    //   port: 8777,
+    //   gas: 8500000,
+    // },
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache-cli, geth or parity) in a separate terminal
@@ -42,10 +71,11 @@ module.exports = {
     // options below to some value.
     //
     // development: {
-    // host: "127.0.0.1",     // Localhost (default: none)
-    // port: 8545,            // Standard Ethereum port (default: none)
-    // network_id: "*",       // Any network (default: none)
-    //},
+    //   host: "127.0.0.1",     // Localhost (default: none)
+    //   port: 8545,            // Standard Ethereum port (default: none)
+    //   network_id: "*",       // Any network (default: none)
+    //   // gas: 8000000,        // Ropsten has a lower block limit than mainnet
+    // },
     // Another network with more advanced options...
     // advanced: {
     // port: 8777,             // Custom port
@@ -57,14 +87,34 @@ module.exports = {
     // },
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
+
+
     // ropsten: {
-    // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
-    // network_id: 3,       // Ropsten's id
-    // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-    // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-    // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-    // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+    //   provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/64dfbe5332794e20b8001d3c5f271956`, 1),
+    //   network_id: 3,       // Ropsten's id
+    //   confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+    //   timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+    //   skipDryRun: true,     // Skip dry run before migrations? (default: false for public nets )
+    //   gas: 8000000,
+    //   gasPrice: 20000000000,
+    //   gasLimit: 9000000,
+    //   from: "0xbce17DD03a5a0628Dc73979EC4d392911069A2F7"
     // },
+
+    // provider: () =>
+    //   new HDWalletProvider(
+    //     mnemonic,
+    //     `https://ropsten.infura.io/v3/64dfbe5332794e20b8001d3c5f271956`
+    //   ),
+    // network_id: "3", // Ropsten's id
+    // gas: 8000000, // Ropsten has a lower block limit than mainnet
+    // confirmations: 0, // # of confs to wait between deployments. (default: 0)
+    // timeoutBlocks: 200, // # of blocks before a deployment times out  (minimum/default: 50)
+    // skipDryRun: true, // Skip dry run before migrations? (default: false for public nets )
+    // gasPrice: 8000000,
+    // from: "0xbce17DD03a5a0628Dc73979EC4d392911069A2F7",
+
+
     // Useful for private networks
     // private: {
     // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
@@ -82,7 +132,7 @@ module.exports = {
   compilers: {
     solc: {
       version: "0.5.17",    // Fetch exact version from solc-bin (default: truffle's version)
-      docker: false,        // Use "0.5.1" you've installed locally with docker (default: false)
+      // docker: false,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       //  optimizer: {
       //    enabled: false,
@@ -104,13 +154,13 @@ module.exports = {
   // $ truffle migrate --reset --compile-all
   //
   // db: {
-    // enabled: false,
-    // host: "127.0.0.1",
-    // adapter: {
-    //   name: "sqlite",
-    //   settings: {
-    //     directory: ".db"
-    //   }
-    // }
+  // enabled: false,
+  // host: "127.0.0.1",
+  // adapter: {
+  //   name: "sqlite",
+  //   settings: {
+  //     directory: ".db"
+  //   }
+  // }
   // }
 };
