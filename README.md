@@ -19,7 +19,7 @@ Ropsten:
 
 ## Deployed version url:
 
-[link smart contract demo with fleek](divine-cherry-7104.on.fleek.co)
+[link smart contract demo with fleek](https://divine-cherry-7104.on.fleek.co/)
 
 ## Directory structure
 
