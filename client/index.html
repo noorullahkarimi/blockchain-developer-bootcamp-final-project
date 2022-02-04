@@ -143,16 +143,15 @@
 <!-- Had trouble and had to move the script down! -->
 <script src="index.js"></script>
 <script>
-  if (typeof window.ethereum !== 'undefined') {
-    console.log('window.ethereum is enabled')
-    if (window.ethereum.isMetaMask === true) {
-      console.log('MetaMask is active');
-
-    } else {
-      console.log('MetaMask is not available');
+  async function getAddress(){
+    console.log('this workwith get address');
+    const addres= await window.ethereum.request({method:'eth_requestAccounts'});
+    console.log(addres);
+    if(addres.length>0){
+      document.getElementById('address_bar').value=addres[0];
+    }else{
+      showAlert('please open your metamask');
     }
-  } else {
-    console.log('window.ethereum is not found');
   }
 </script>
 
