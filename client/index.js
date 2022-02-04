@@ -241,6 +241,16 @@ const ssAddress = '0x51789737bc70c10C577a633874e9968E7925c67c';
 // const escrowSystem_obj = new web3.eth.Contract(ssABI, ssAddress);
 // escrowSystem_obj.setProvider(window.ethereum);
 //buttons
+  async function getAddress(){
+    console.log('this workwith get address');
+    const addres= await window.ethereum.request({method:'eth_requestAccounts'});
+    console.log(addres);
+    if(addres.length>0){
+      document.getElementById('address_bar').value=addres[0];
+    }else{
+      showAlert('please open your metamask');
+    }
+  }
 const button_pay = document.getElementById('pay-button');
 const button_deposit = document.getElementById('deposit-button');
 const button_confirm = document.getElementById('confirm-button');
